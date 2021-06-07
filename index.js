@@ -20,7 +20,7 @@ const opciones = {
 const estadoJuego = {
 	intervalos: {
 		inicio: 1000,
-		paso: 400
+		paso: 200
 	},
 	segundosInicio: 3,
 	interaciones: false,
@@ -69,7 +69,7 @@ const desactivarElementos = (elementos) => {
 
 // iteracciones
 
-function activarInteracciones () {
+const activarInteracciones = () => {
 	const elementoApp = window.document.getElementById('app');
 	elementoApp.classList.remove('app-background-dark');
 
@@ -80,7 +80,7 @@ function activarInteracciones () {
 	estadoJuego.interaciones = true; 
 };
 
-function desactivarInteracciones () {
+const desactivarInteracciones = () => {
 	const elementoApp = window.document.getElementById('app');
 	elementoApp.classList.add('app-background-dark');
 
@@ -90,7 +90,7 @@ function desactivarInteracciones () {
 	estadoJuego.interaciones = false; 
 };
 
-function accionModalInicio () {
+const accionModalInicio = () => {
 	const inputDom = window.document.getElementById('nombre_jugador');
 	const nombreJugador = inputDom.value;
 
@@ -141,7 +141,7 @@ const clickBoton = (id) => {
 		mostrarElemento(elementoModalFinal);
 
 		const puntajeDom = window.document.getElementById('puntaje');
-		const puntaje = estadoJuego.nivelUsuario
+		const puntaje = estadoJuego.nivelJuego 
 		const puntajeFinal = puntaje - 1
 		puntajeDom.textContent = ("Tu puntaje es: " + puntajeFinal);
 
@@ -180,24 +180,27 @@ const reproducirSecuencia = () => {
 
 		const finReproduccion = paso === (estadoJuego.secuenciaJuego.length * 2);
 
-		if (pausaPaso) {
-			desactivarElementos(botonesDelJuego);
-			paso++;
-			return;
-		}
+				if (pausaPaso) {
+					desactivarElementos(botonesDelJuego);
+					paso++;
+					return;
+				}
 
-		if (finReproduccion) {
-			clearInterval(intervalo);
-			desactivarElementos(botonesDelJuego);
-			activarInteracciones();
-			return;
-		};
+				if (finReproduccion) {
+					clearInterval(intervalo);
+					desactivarElementos(botonesDelJuego);
+					activarInteracciones();
+					return;
+				};
 
 		const id = estadoJuego.secuenciaJuego[paso / 2];
 		const referenciaDOM = window.document.getElementById(id);
-		activarElemento(referenciaDOM);
+		activarElemento(referenciaDOM);	
+
 		
 		paso++;
+
+	
 
 		return;
 
