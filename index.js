@@ -142,7 +142,8 @@ const clickBoton = (id) => {
 
 		const puntajeDom = window.document.getElementById('puntaje');
 		const puntaje = estadoJuego.nivelUsuario
-		puntajeDom.textContent = ("Tu puntaje es: " + puntaje);
+		const puntajeFinal = puntaje - 1
+		puntajeDom.textContent = ("Tu puntaje es: " + puntajeFinal);
 
 		return ;
 		
@@ -180,6 +181,7 @@ const reproducirSecuencia = () => {
 		const finReproduccion = paso === (estadoJuego.secuenciaJuego.length * 2);
 
 		if (pausaPaso) {
+			desactivarElementos(botonesDelJuego);
 			paso++;
 
 			return;
