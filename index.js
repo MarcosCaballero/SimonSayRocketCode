@@ -183,7 +183,6 @@ const reproducirSecuencia = () => {
 		if (pausaPaso) {
 			desactivarElementos(botonesDelJuego);
 			paso++;
-
 			return;
 		}
 
