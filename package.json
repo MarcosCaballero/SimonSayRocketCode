@@ -1,0 +1,28 @@
+{
+  "name": "simonsayrocketcode",
+  "version": "1.0.0",
+  "description": "Simon Say game develop for Rocket Code Academy",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MarcosCaballero/SimonSayRocketCode.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MarcosCaballero/SimonSayRocketCode/issues"
+  },
+  "homepage": "https://github.com/MarcosCaballero/SimonSayRocketCode#readme",
+  "devDependencies": {
+    "@eslint/css": "^0.14.1",
+    "@eslint/js": "^9.39.4",
+    "eslint": "^9.39.4",
+    "globals": "^17.6.0"
+  }
+}
