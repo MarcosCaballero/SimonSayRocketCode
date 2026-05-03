@@ -30,9 +30,6 @@ body {
   top: 0;
 }
 
-.app-background-dark {
-
-}
 
 .app-background-dark::before {
   opacity: 1;
@@ -106,7 +103,7 @@ body {
   position: absolute;
   text-align: center;
   font-weight: bold;
-  color: #ff7077;
+  color: #d53840;
   font-size: 26px;
   cursor: pointer;
   width: 280px;
@@ -114,10 +111,6 @@ body {
   border: none;
   bottom: 0;
   left: 50%;
-}
-
-.hide {
-  display: none !important;
 }
 
 /*

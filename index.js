@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /**
 * Variables de configuración del juego
 */
@@ -70,10 +71,10 @@ const desactivarElementos = (elementos) => {
 // iteracciones
 
 const activarInteracciones = () => {
-	const elementoApp = window.document.getElementById('app');
+	const elementoApp = globalThis.document.getElementById('app');
 	elementoApp.classList.remove('app-background-dark');
 
-	const elementoTexto = window.document.getElementById('turno_texto');
+	const elementoTexto = globalThis.document.getElementById('turno_texto');
 	mostrarElemento(elementoTexto);
 	elementoTexto.textContent = 'tu turno';
 
@@ -81,41 +82,39 @@ const activarInteracciones = () => {
 };
 
 const desactivarInteracciones = () => {
-	const elementoApp = window.document.getElementById('app');
+	const elementoApp = globalThis.document.getElementById('app');
 	elementoApp.classList.add('app-background-dark');
 
-	const elementoTexto = window.document.getElementById('turno_texto');
+	const elementoTexto = globalThis.document.getElementById('turno_texto');
 	ocultarElemento(elementoTexto);
 
 	estadoJuego.interaciones = false; 
 };
 
 const accionModalInicio = () => {
-	const inputDom = window.document.getElementById('nombre_jugador');
+	const inputDom = globalThis.document.getElementById('nombre_jugador');
 	const nombreJugador = inputDom.value;
 
 	const permitirAcceso = nombreJugador.length;
 
 	if (permitirAcceso) {
-		const elementoModalInicio = window.document.getElementById('inicio_juego');
+		const elementoModalInicio = globalThis.document.getElementById('inicio_juego');
 		ocultarElemento(elementoModalInicio); 
 
-		const elementoNombre = window.document.getElementById('nombre_usuario');
+		const elementoNombre = globalThis.document.getElementById('nombre_usuario');
 		elementoNombre.textContent = nombreJugador;
-		window.localStorage.setItem('nombre', nombreJugador);
+		globalThis.localStorage.setItem('nombre', nombreJugador);
 
 		inicializacion();
 	};
 };
 
 function accionModalFin () {
-	const elementoModalFinal = window.document.getElementById('fin_juego');
+	const elementoModalFinal = globalThis.document.getElementById('fin_juego');
 	ocultarElemento(elementoModalFinal);
 
 	inicializacion();
 };
-
-
 
 const clickBoton = (id) => {
 
@@ -131,16 +130,16 @@ const clickBoton = (id) => {
 	if (secuenciaJuegoEstaEtapa === secuenciaUsuarioEstaEtapa) { //Se validan resultados y se pasa al siguiente nivel
 		estadoJuego.nivelUsuario = estadoJuego.nivelUsuario + 1;	
 	} else { //Aca el juego termina
-		const elementoJuego = window.document.getElementById('juego');
+		const elementoJuego = globalThis.document.getElementById('juego');
 		ocultarElemento(elementoJuego);
 	
 
 		desactivarInteracciones();
 
-		const elementoModalFinal = document.getElementById('fin_juego');
+		const elementoModalFinal = globalThis.document.getElementById('fin_juego');
 		mostrarElemento(elementoModalFinal);
 
-		const puntajeDom = window.document.getElementById('puntaje');
+		const puntajeDom = globalThis.document.getElementById('puntaje');
 		const puntaje = estadoJuego.nivelJuego 
 		const puntajeFinal = puntaje - 1
 		puntajeDom.textContent = ("Tu puntaje es: " + puntajeFinal);
@@ -194,16 +193,10 @@ const reproducirSecuencia = () => {
 				};
 
 		const id = estadoJuego.secuenciaJuego[paso / 2];
-		const referenciaDOM = window.document.getElementById(id);
+		const referenciaDOM = globalThis.document.getElementById(id);
 		activarElemento(referenciaDOM);	
-
 		
 		paso++;
-
-	
-
-		return;
-
 	}, estadoJuego.intervalos.paso);
 };
 
@@ -215,7 +208,7 @@ const inicializacion = () => {
 	estadoJuego.nivelJuego = 0;
 	estadoJuego.nivelUsuario = 0;
 
-	const elementoJuego = window.document.getElementById('juego');
+	const elementoJuego = globalThis.document.getElementById('juego');
 	mostrarElemento(elementoJuego);
 
 	const elementoCuentaRegresiva = document.getElementById('cuenta_regresiva');
@@ -235,6 +228,6 @@ const inicializacion = () => {
 	}, estadoJuego.intervalos.inicio);
 };
 
-const nombreJugadorStorage = window.localStorage.getItem('nombre');
+const nombreJugadorStorage = globalThis.localStorage.getItem('nombre');
 const nombre = document.getElementById('nombre_jugador');
 nombre.value = nombreJugadorStorage || '';
